@@ -1,3 +1,5 @@
+const { Exception } = require('../services');
+
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
 );
@@ -7,8 +9,8 @@ return emailRegex.test(email);
 }
 
 function validatePassword(password) {
-  if (!password) return ({ message: 'O campo "password" é obrigatório' });
-  if (password.length < 6) return ({ message: 'O "password" deve ter pelo menos 6 caracteres' }); 
+  if (!password) throw new Exception('O campo "password" é obrigatório');
+  if (password.length < 6) throw new Exception('O "password" deve ter pelo menos 6 caracteres'); 
 }
 
 function validateEmail(email) {
@@ -23,9 +25,8 @@ if (!(validateFormatEmail(email))) {
 function validateLogin(req, _res, next) {
 const { email, password } = req.body;
 const EmailIsInvalid = validateEmail(email);
-const passwordIsInvalid = validatePassword(password);
+validatePassword(password);
 if (EmailIsInvalid) next(EmailIsInvalid);
-if (passwordIsInvalid) next(passwordIsInvalid);
 next();
 }
 
