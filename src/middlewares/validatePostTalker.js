@@ -25,7 +25,7 @@ function validateRate(rate) {
 }
 
 function validateTalk(talk) {
-  if (!talk || !talk.watchedAt || !talk.rate) {
+  if (!talk || !talk.watchedAt || talk.rate === undefined) {
  return (
     { message: 'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios' }); 
 }

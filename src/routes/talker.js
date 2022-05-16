@@ -19,8 +19,16 @@ router.post('/', middlewares.validatePostTalker, (req, res) => {
   req.body.id = talkers.length + 1;
   talkers.push(req.body);
   writeFile(talkers);
-  console.log(readFile('talker.json'));
   res.status(201).json(req.body);
+});
+
+router.put('/:id', middlewares.validatePostTalker, (req, res) => {
+  const { id } = req.params;
+  const talkers = readFile('talker.json');
+  req.body.id = +id;
+  const newTalkers = talkers.map((talker) => (+talker.id === +id ? req.body : talker));
+  writeFile(newTalkers);
+  res.status(200).json(req.body);
 });
 
 module.exports = router;
