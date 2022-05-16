@@ -1,10 +1,5 @@
 const validateDataFormat = /^\d{2}\/\d{2}\/\d{4}$/; 
 
-function validateToken(token) {
-if (!token) return ({ statusCode: 401, message: 'Token não encontrado' });
-if (token.length !== 16) return ({ statusCode: 401, message: 'Token inválido' });
-}
-
 function validateName(name) {
 if (!name) return ({ message: 'O campo "name" é obrigatório' });
 if (name.length < 3) return ({ message: 'O "name" deve ter pelo menos 3 caracteres' });
@@ -37,8 +32,7 @@ function validateTalk(talk) {
 }
 
 function validateConditions(authorization, req) {
-const conditions = validateToken(authorization)
- || validateName(req.body.name) || validateAge(req.body.age) 
+const conditions = validateName(req.body.name) || validateAge(req.body.age) 
  || validateTalk(req.body.talk) || validateRate(req.body.talk.rate);
  return conditions;
 }
