@@ -14,6 +14,4 @@ router.get('/', (_req, res) => {
   return res.status(200).json(talkers);
 });
 
-router.use(middlewares.handleError);
-
 module.exports = router;

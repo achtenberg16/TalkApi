@@ -1,10 +1,10 @@
 const express = require('express');
-
 const crypto = require('crypto');
+const middlewares = require('../middlewares');
 
 const router = express.Router();
 
-router.post('/', (_req, res) => {
+router.post('/', middlewares.validateLogin, (_req, res) => {
   res.status(200).json({ token: crypto.randomBytes(8).toString('hex') });
 });
 
