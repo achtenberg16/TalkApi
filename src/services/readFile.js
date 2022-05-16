@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-function readFile(path) {
-  return JSON.parse(fs.readFileSync(path, 'utf8'));
+function readFile() {
+  return JSON.parse(fs.readFileSync('talker.json', 'utf8'));
 }
 
 module.exports = readFile;
