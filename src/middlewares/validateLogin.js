@@ -4,10 +4,6 @@ const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
 );
 
-function validateFormatEmail(email) {
-return emailRegex.test(email);
-}
-
 function validatePassword(password) {
   if (!password) throw new Exception('O campo "password" é obrigatório');
   if (password.length < 6) throw new Exception('O "password" deve ter pelo menos 6 caracteres'); 
@@ -15,7 +11,7 @@ function validatePassword(password) {
 
 function validateEmail(email) {
   if (!email) throw new Exception('O campo "email" é obrigatório'); 
-  if (!(validateFormatEmail(email))) {
+  if (!(emailRegex.test(email))) {
     throw new Exception(
     'O "email" deve ter o formato "email@email.com"',
   ); 
