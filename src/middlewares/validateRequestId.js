@@ -1,4 +1,4 @@
-const { getTalkerById } = require('../services'); 
+const { getTalkerById } = require('../helpers'); 
 
 function validateRequestId(req, res, next) {
 const { id } = req.params;

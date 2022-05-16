@@ -1,5 +1,5 @@
 const express = require('express');
-const { readFile, writeFile } = require('../services');
+const { readFile, writeFile } = require('../helpers');
 const middlewares = require('../middlewares/index');
 
 const router = express.Router();

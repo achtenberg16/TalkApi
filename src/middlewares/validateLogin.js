@@ -1,6 +1,6 @@
-const { Exception } = require('../services');
+const { Exception } = require('../helpers');
 
-const emailRegex = RegExp(
+const EMAIL_REGEX = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
 );
 
@@ -11,7 +11,7 @@ function validatePassword(password) {
 
 function validateEmail(email) {
   if (!email) throw new Exception('O campo "email" é obrigatório'); 
-  if (!(emailRegex.test(email))) {
+  if (!(EMAIL_REGEX.test(email))) {
     throw new Exception(
     'O "email" deve ter o formato "email@email.com"',
   ); 
