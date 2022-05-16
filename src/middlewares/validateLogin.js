@@ -14,19 +14,18 @@ function validatePassword(password) {
 }
 
 function validateEmail(email) {
-  if (!email) return ({ message: 'O campo "email" é obrigatório' }); 
-if (!(validateFormatEmail(email))) {
- return ({
-  message: 'O "email" deve ter o formato "email@email.com"',
-}); 
+  if (!email) throw new Exception('O campo "email" é obrigatório'); 
+  if (!(validateFormatEmail(email))) {
+    throw new Exception(
+    'O "email" deve ter o formato "email@email.com"',
+  ); 
 } 
 }
 
 function validateLogin(req, _res, next) {
 const { email, password } = req.body;
-const EmailIsInvalid = validateEmail(email);
+validateEmail(email);
 validatePassword(password);
-if (EmailIsInvalid) next(EmailIsInvalid);
 next();
 }
 
