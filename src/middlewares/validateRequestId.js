@@ -4,7 +4,7 @@ function validateRequestId(req, res, next) {
 const { id } = req.params;
 console.log(id);
 if (!getTalkerById(id)) {
-  return res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
+  next({ statusCode: 404, message: 'Pessoa palestrante não encontrada' });
 }
 
 res.talker = getTalkerById(id);

@@ -1,10 +1,10 @@
 const express = require('express');
 const { readFile } = require('../services');
-const { validateRequestId } = require('../middlewares/index');
+const middlewares = require('../middlewares/index');
 
 const router = express.Router();
 
-router.get('/:id', validateRequestId, (_req, res) => res.status(200).json(res.talker));
+router.get('/:id', middlewares.validateRequestId, (_req, res) => res.status(200).json(res.talker));
 
 router.get('/', (_req, res) => {
   const talkers = readFile('talker.json');
@@ -13,5 +13,7 @@ router.get('/', (_req, res) => {
   }
   return res.status(200).json(talkers);
 });
+
+router.use(middlewares.handleError);
 
 module.exports = router;
