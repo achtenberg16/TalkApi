@@ -1,5 +1,5 @@
 const express = require('express');
-const { readFile, writeFile } = require('../helpers');
+const { readFile, writeFile, filterTalkersByName } = require('../helpers');
 const middlewares = require('../middlewares/index');
 const { RESPONSE_CODE } = require('../helpers/constants');
 
@@ -9,8 +9,7 @@ router.get('/search', middlewares.validateAuthorization, (req, res) => {
   const { q: query } = req.query;
   const talkers = readFile(); 
   if (!query) return res.status(RESPONSE_CODE.OK).json(talkers);
-  const talkersFiltered = talkers.filter((talker) => talker.name.toLowerCase()
-  .includes(query.toLowerCase()));
+  const talkersFiltered = filterTalkersByName(talkers, query);
   res.status(RESPONSE_CODE.OK).json(talkersFiltered);
 });
 
@@ -39,16 +38,18 @@ router.put('/:id', middlewares.validatePostTalker, (req, res) => {
   const { id } = req.params;
   const talkers = readFile();
   req.body.id = +id;
+  
   const newTalkers = talkers.map((talker) => (+talker.id === +id ? req.body : talker));
   writeFile(newTalkers);
+
   res.status(RESPONSE_CODE.OK).json(req.body);
 });
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   const talkers = readFile();
-
   writeFile(talkers.filter((talker) => +talker.id !== +id));
+
   res.status(RESPONSE_CODE.NO_CONTENT).end();
 });
 

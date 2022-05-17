@@ -1,5 +1,5 @@
 const { readFile, writeFile } = require('./handleFile');
-const { getTalkerById } = require('./auxiliaryFuncitons');
+const { getTalkerById, filterTalkersByName } = require('./auxiliaryFuncitons');
 const Exception = require('./Exception');
 
 module.exports = {
@@ -7,4 +7,5 @@ module.exports = {
   getTalkerById,
   writeFile,
   Exception,
+  filterTalkersByName,
 };
