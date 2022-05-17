@@ -17,7 +17,7 @@ router.get('/search', middlewares.validateAuthorization, (req, res) => {
 router.get('/:id', middlewares.validateRequestId, (_req, res) => (
   res.status(RESPONSE_CODE.OK).json(res.talker)));
 
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
   const talkers = readFile();
   if (!talkers || talkers === '') {
     return res.status(RESPONSE_CODE.OK).json({});
