@@ -1,4 +1,4 @@
-const readFile = require('./readFile');
+const { readFile } = require('./handleFile');
 
 function getTalkerById(id) {
   const talkers = readFile('talker.json');
