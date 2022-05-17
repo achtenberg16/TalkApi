@@ -1,9 +1,5 @@
 const { Exception } = require('../helpers');
-const { MESSAGES } = require('../helpers/constants');
-
-const EMAIL_REGEX = RegExp(
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-);
+const { MESSAGES, REGEX_EXPRESSION } = require('../helpers/constants');
 
 function validatePassword(password) {
   if (!password) throw new Exception(MESSAGES.passwordIsRequired);
@@ -12,7 +8,7 @@ function validatePassword(password) {
 
 function validateEmail(email) {
   if (!email) throw new Exception(MESSAGES.emailIsRequired); 
-  if (!(EMAIL_REGEX.test(email))) {
+  if (!(REGEX_EXPRESSION.email.test(email))) {
     throw new Exception(MESSAGES.emailIsInvalid); 
 } 
 }

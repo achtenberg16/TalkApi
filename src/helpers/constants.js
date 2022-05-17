@@ -15,4 +15,9 @@ const MESSAGES = {
   tokenIsInvalid: 'Token inválido',
 };
 
-module.exports = { MESSAGES };
+const REGEX_EXPRESSION = {
+  email: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+  data: /^\d{2}\/\d{2}\/\d{4}$/,
+};
+
+module.exports = { MESSAGES, REGEX_EXPRESSION };

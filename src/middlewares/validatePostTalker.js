@@ -1,6 +1,5 @@
-const validateDataFormat = /^\d{2}\/\d{2}\/\d{4}$/; 
 const { Exception } = require('../helpers');
-const { MESSAGES } = require('../helpers/constants');
+const { MESSAGES, REGEX_EXPRESSION } = require('../helpers/constants');
 
 function validatePersonInfo(age, name) {
   if (!name) throw new Exception(MESSAGES.nameIsRequired);
@@ -18,7 +17,7 @@ function validateTalk(talk) {
   if (!talk || !talk.watchedAt || talk.rate === undefined) {
    throw new Exception(MESSAGES.talkIsInvalid); 
 }
-  if (!validateDataFormat.test(talk.watchedAt)) throw new Exception(MESSAGES.watchedAtIsInvalid);
+  if (!REGEX_EXPRESSION.data.test(talk.watchedAt)) throw new Exception(MESSAGES.watchedAtIsInvalid);
 }
 
 function validatePostTalker(req, _res, next) {
