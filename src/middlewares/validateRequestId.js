@@ -1,9 +1,11 @@
 const { getTalkerById } = require('../helpers'); 
+const { Exception } = require('../helpers');
+const { MESSAGES } = require('../helpers/constants');
 
 function validateRequestId(req, res, next) {
 const { id } = req.params;
 if (!getTalkerById(id)) {
-  next({ statusCode: 404, message: 'Pessoa palestrante não encontrada' });
+  throw new Exception(MESSAGES.talkerNotFound, 404);
 }
 
 res.talker = getTalkerById(id);

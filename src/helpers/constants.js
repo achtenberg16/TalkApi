@@ -10,6 +10,7 @@ const MESSAGES = {
   rateIsInvalid: 'O campo "rate" deve ser um inteiro de 1 à 5',
   talkIsInvalid: 'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios',
   watchedAtIsInvalid: 'O campo "watchedAt" deve ter o formato "dd/mm/aaaa"',
+  talkerNotFound: 'Pessoa palestrante não encontrada',
 };
 
 module.exports = { MESSAGES };

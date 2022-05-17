@@ -18,7 +18,6 @@ function validateTalk(talk) {
   if (!talk || !talk.watchedAt || talk.rate === undefined) {
    throw new Exception(MESSAGES.talkIsInvalid); 
 }
-
   if (!validateDataFormat.test(talk.watchedAt)) throw new Exception(MESSAGES.watchedAtIsInvalid);
 }
 
