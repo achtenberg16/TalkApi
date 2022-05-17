@@ -1,20 +1,19 @@
 const { Exception } = require('../helpers');
+const { MESSAGES } = require('../helpers/constants');
 
 const EMAIL_REGEX = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
 );
 
 function validatePassword(password) {
-  if (!password) throw new Exception('O campo "password" é obrigatório');
-  if (password.length < 6) throw new Exception('O "password" deve ter pelo menos 6 caracteres'); 
+  if (!password) throw new Exception(MESSAGES.passwordIsRequired);
+  if (password.length < 6) throw new Exception(MESSAGES.passwordIsInvalid); 
 }
 
 function validateEmail(email) {
-  if (!email) throw new Exception('O campo "email" é obrigatório'); 
+  if (!email) throw new Exception(MESSAGES.emailIsRequired); 
   if (!(EMAIL_REGEX.test(email))) {
-    throw new Exception(
-    'O "email" deve ter o formato "email@email.com"',
-  ); 
+    throw new Exception(MESSAGES.emailIsInvalid); 
 } 
 }
 
