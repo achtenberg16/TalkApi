@@ -1,6 +1,5 @@
-const readFile = require('./readFile');
+const { readFile, writeFile } = require('./handleFile');
 const { getTalkerById } = require('./auxiliaryFuncitons');
-const writeFile = require('./writeFile');
 const Exception = require('./Exception');
 
 module.exports = {
