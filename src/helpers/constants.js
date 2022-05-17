@@ -20,4 +20,13 @@ const REGEX_EXPRESSION = {
   data: /^\d{2}\/\d{2}\/\d{4}$/,
 };
 
-module.exports = { MESSAGES, REGEX_EXPRESSION };
+const RESPONSE_CODE = {
+  OK: 200,
+  CREATED: 201,
+  NO_CONTENT: 204,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  NOT_FOUND: 404,
+};
+
+module.exports = { MESSAGES, REGEX_EXPRESSION, RESPONSE_CODE };
