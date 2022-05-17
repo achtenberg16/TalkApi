@@ -11,6 +11,8 @@ const MESSAGES = {
   talkIsInvalid: 'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios',
   watchedAtIsInvalid: 'O campo "watchedAt" deve ter o formato "dd/mm/aaaa"',
   talkerNotFound: 'Pessoa palestrante não encontrada',
+  tokenNotFound: 'Token não encontrado',
+  tokenIsInvalid: 'Token inválido',
 };
 
 module.exports = { MESSAGES };

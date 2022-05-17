@@ -7,7 +7,6 @@ const { id } = req.params;
 if (!getTalkerById(id)) {
   throw new Exception(MESSAGES.talkerNotFound, 404);
 }
-
 res.talker = getTalkerById(id);
 next();
 }
